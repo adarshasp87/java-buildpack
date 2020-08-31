@@ -29,7 +29,7 @@ module JavaBuildpack
       def compile
         download_zip false
         droplet.copy_resources
-        FileUtils.cp_r @droplet.sandbox + 'jacocoagent.jar', @application.root + 'BOOT-INF/lib'
+        FileUtils.cp_r @droplet.sandbox + 'jacoco-0.8.5.jar', @application.root + 'BOOT-INF/lib'
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
