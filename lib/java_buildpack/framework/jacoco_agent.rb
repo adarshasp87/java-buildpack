@@ -28,7 +28,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_zip false
-        @droplet.copy_resources(@droplet.additional_libraries)
+        @droplet.copy_resources
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
