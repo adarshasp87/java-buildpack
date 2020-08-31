@@ -30,6 +30,7 @@ module JavaBuildpack
         puts "Smarshp-------------->"
         @droplet.copy_resources
         download_zip false
+        FileUtils.cp_r @droplet.sandbox, @droplet.additional_libraries
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
