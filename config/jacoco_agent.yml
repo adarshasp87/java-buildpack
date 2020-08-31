@@ -15,5 +15,5 @@
 
 # Configuration for the JaCoco Agent framework
 ---
-version: 0.8.5
-repository_root: https://ady2022.jfrog.io/artifactory/jacoco
+version: 0.+
+repository_root: "{default.repository.root}/jacoco"
