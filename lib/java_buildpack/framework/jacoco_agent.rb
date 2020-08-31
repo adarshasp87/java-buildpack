@@ -17,6 +17,7 @@
 
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/framework'
+require 'fileutils'
 
 module JavaBuildpack
   module Framework
@@ -27,7 +28,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         puts "Smarshp-------------->"
-        @droplet.copy_resources(@droplet.additional_libraries)
+        @droplet.copy_resources
         download_zip false
       end
 
