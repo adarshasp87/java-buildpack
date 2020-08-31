@@ -24,11 +24,18 @@ module JavaBuildpack
 
     # Encapsulates the functionality for enabling zero-touch JacCoCo support.
     class JacocoAgent < JavaBuildpack::Component::VersionedDependencyComponent
+      include JavaBuildpack::Util
+      
+      def initialize(context)
+        super(context)
+        @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new
+      end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_zip false
         @droplet.copy_resources
+        @droplet.additional_libraries.link_to(@spring_boot_utils.lib(@droplet))
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
