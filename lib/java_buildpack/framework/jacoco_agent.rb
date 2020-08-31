@@ -34,8 +34,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_zip false
-        @droplet.copy_resources
-        @droplet.additional_libraries.link_to(@spring_boot_utils.lib(@droplet))
+        @droplet.copy_resources(@spring_boot_utils.lib(@droplet))
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
