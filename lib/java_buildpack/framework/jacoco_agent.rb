@@ -29,7 +29,7 @@ module JavaBuildpack
       def compile
         download_zip false
         droplet.copy_resources
-        FileUtils.cp_r @droplet.sandbox + 'jacoco-0.8.5.jar', @application.root + 'BOOT-INF/lib'
+        #FileUtils.cp_r @droplet.sandbox + 'jacoco-0.8.5.jar', @application.root + 'BOOT-INF/lib'
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
@@ -46,7 +46,7 @@ module JavaBuildpack
         properties['port'] = credentials['port'] if credentials.key? 'port'
         properties['output'] = credentials['output'] if credentials.key? 'output'
         
-        FileUtils.cp_r @droplet.sandbox + 'jacocoagent.jar', @application.root + 'BOOT-INF/lib'
+        FileUtils.cp_r @droplet.sandbox + 'jacocoagent.jar', @application.root
         @droplet.java_opts.add_javaagent_with_props(@droplet.sandbox + 'jacocoagent.jar', properties)
       end
 
