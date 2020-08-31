@@ -46,7 +46,7 @@ module JavaBuildpack
         properties['output'] = credentials['output'] if credentials.key? 'output'
         
         FileUtils.mkdir_p(@application.root + 'adarsh/smarsh')
-        FileUtils.cp @droplet.sandbox + 'jacocoagent.jar', java_home.root + 'adarsh/smarsh'
+        FileUtils.cp @droplet.sandbox + 'jacocoagent.jar', @application.root + 'adarsh/smarsh'
         
         @droplet.java_opts.add_javaagent_with_props(@droplet.sandbox + 'jacocoagent.jar', properties)
       end
