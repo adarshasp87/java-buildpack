@@ -29,7 +29,7 @@ module JavaBuildpack
       def compile
         download_zip false
         droplet.copy_resources
-        @droplet.additional_libraries.link_to @droplet.sandbox
+     
         #FileUtils.cp_r @droplet.sandbox + 'jacoco-0.8.5.jar', @application.root + 'BOOT-INF/lib'
       end
 
@@ -47,7 +47,7 @@ module JavaBuildpack
         properties['port'] = credentials['port'] if credentials.key? 'port'
         properties['output'] = credentials['output'] if credentials.key? 'output'
         
-        @droplet.additional_libraries.link_to @droplet.sandbox
+        FileUtils.mkdir_p(@application.root + 'adarsh/smarsh')
         
         @droplet.java_opts.add_javaagent_with_props(@droplet.sandbox + 'jacocoagent.jar', properties)
       end
